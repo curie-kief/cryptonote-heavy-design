@@ -57,14 +57,14 @@ In light of this, we urgently call for more research into the "bypass" of crypto
 
 **Expert's opinion**
 
-Monero project utterly ignored the opinions of FPGA programmers that poked their head into the discussion [1](https://github.com/monero-project/monero/pull/3253#issuecomment-367946170)[2](https://github.com/monero-project/monero/pull/3253#issuecomment-365418373). We thought that this was not a wise course of action.
+Monero project utterly ignored the opinions of FPGA programmers that poked their head into the discussion [[1]](https://github.com/monero-project/monero/pull/3253#issuecomment-367946170)[[2]](https://github.com/monero-project/monero/pull/3253#issuecomment-365418373). We thought that this was not a wise course of action.
 
 
 ### Design features and rationale
 
 **Division half-step**
 
-Our starting point was this opinion [3](https://github.com/sumoprojects/sumokoin/issues/91#issuecomment-373565085). 
+Our starting point was this opinion [[3]](https://github.com/sumoprojects/sumokoin/issues/91#issuecomment-373565085). 
 
 We decided to call it a "half-step" since it is deliberately designed to be awkward in relation to the rest of the loop. Unlike the rest of the loop, which uses 16 byte wide reads and writes, it only uses a 12 byte wide read and 8 byte wide write. First 8 bytes, treated as a signed integer, become 'n' (numerator), the following 4 bytes, again treated as a signed integer become 'd' (denominator). Variable q (quotient) is calculated as `q = n / (d | 5)`. Value of 5 was chosen to avoid problematic cases like 0, 1, 2 and 4. 
 
@@ -72,7 +72,7 @@ We decided to call it a "half-step" since it is deliberately designed to be awkw
  
 **Scratchpad increase to 4MB** 
 
-This is the middle ground between single-thread performance (and therefore verification times), and FPGA capabilities [4](https://github.com/sumoprojects/sumokoin/issues/91#issuecomment-373586177). A welcome side effect of this change is reduction in mining performance (all-threads performance) without affecting verification times.
+This is the middle ground between single-thread performance (and therefore verification times), and FPGA capabilities [[4]](https://github.com/sumoprojects/sumokoin/issues/91#issuecomment-373586177). A welcome side effect of this change is reduction in mining performance (all-threads performance) without affecting verification times.
 
 **Round decrease to 16384**
 
